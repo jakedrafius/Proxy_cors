@@ -26,5 +26,5 @@ def proxy(path):
 
     return resp.content, resp.status_code, headers
 
-if __name__ == '__main__':
+def create_app():    
     app.run(debug=True, port=8000)
