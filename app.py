@@ -15,8 +15,11 @@ def proxy(path):
         'Accept-Language': request.headers.get('Accept-Language')
     }
 
+    params = request.args.to_dict()
+    params.pop("url")
+
     try:
-        resp = requests.get(url, headers=headers)
+        resp = requests.get(url, headers=headers, params=params)
     except requests.exceptions.RequestException as e:
         return jsonify(error=str(e)), 500
 
